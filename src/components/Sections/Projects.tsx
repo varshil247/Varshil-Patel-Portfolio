@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import type { FC, ReactElement } from "react";
-import { Github, ExternalLink } from "lucide-react";
+import React from "react";
+import type { FC } from "react";
+import { ExternalLink } from "lucide-react";
 
 // ! ----------------------------------------------------------------------------------------------
 

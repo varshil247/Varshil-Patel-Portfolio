@@ -3,7 +3,7 @@ import { Sun, Moon } from "lucide-react";
 
 // ! ----------------------------------------------------------------------------------------------
 
-const ThemeToggleAnimated: React.FC<ThemeToggleAnimatedProps> = () => {
+const ThemeToggleAnimated = () => {
   const [currentTheme, setCurrentTheme] = useState<"light" | "dark">("light");
 
   const handleThemeChange = () => {

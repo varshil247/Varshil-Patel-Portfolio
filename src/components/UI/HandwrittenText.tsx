@@ -7,9 +7,10 @@ interface HandwrittenTextProps {
   initialViewBox?: string;
   strokeWidth?: number;
   drawDurationSec?: number;
+  pauseDurationSec?: number;
   eraseDurationSec?: number;
+  blankDurationSec?: number;
   viewBoxPadding?: number;
-  className?: string;
 }
 
 // ! ----------------------------------------------------------------------------------------------
@@ -23,7 +24,6 @@ const HandwrittenText: React.FC<HandwrittenTextProps> = ({
   eraseDurationSec = 3,
   blankDurationSec = 3,
   viewBoxPadding = 1,
-  className,
 }) => {
   const pathRef = useRef<SVGPathElement>(null);
   const [calculatedViewBox, setCalculatedViewBox] = useState<string | null>(null);

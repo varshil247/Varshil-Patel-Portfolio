@@ -1,12 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import HandwrittenText from "../UI/HandwrittenText";
-import PortfolioLogo from "../../assets/portfolio_logo.png";
-import Img1 from "../../assets/img1.jpg";
-import Img2 from "../../assets/img2.JPG";
-import Img3 from "../../assets/img3.JPG";
-import Img4 from "../../assets/img4.JPG";
-import Img5 from "../../assets/img5.jpg";
-import Img6 from "../../assets/img6.jpg";
+
 import Img7 from "../../assets/img7.jpg";
 import Img8 from "../../assets/img8.jpg";
 import Img9 from "../../assets/img9.jpg";

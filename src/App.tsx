@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, type JSX } from "react";
-import { Signature, Briefcase, Presentation, GraduationCap, MessageCircle } from "lucide-react";
+import { Signature, Briefcase, Presentation, MessageCircle } from "lucide-react";
 
 import Home from "./components/Sections/Home";
 import About from "./components/Sections/About";
