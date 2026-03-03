@@ -5,17 +5,21 @@
 @tailwind utilities;
 
 .light {
-  --light: #faf9f6;
-  --regular: #7a93ac;
-  --dark: #2d3142;
-  --special: #315c2b;
+  --background: #ffffff;
+  --light: #E5E6E8;
+  --regular: #556a7e;
+  --dark: #000000;
+  --special: #2d8650;
+  --grayed: rgba(122,147,172,0.15);
 }
 
 .dark {
-  --light: #2d3142;
+  --background: #000000;
+  --light: #111217;
   --regular: #7a93ac;
-  --dark: #faf9f6;
+  --dark: #ffffff;
   --special: #aef6c7;
+  --grayed: rgba(122,147,172,0.15);
 }
 
 html {

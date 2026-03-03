@@ -13,6 +13,8 @@ export default {
         regular: "var(--regular)",
         dark: "var(--dark)",
         special: "var(--special)",
+        background: "var(--background)",
+        grayed: "var(--grayed)",
       },
     },
   },

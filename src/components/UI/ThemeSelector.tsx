@@ -1,42 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
 
 // ! ----------------------------------------------------------------------------------------------
 
-interface ThemeToggleAnimatedProps {
-  theme: "light" | "dark";
-  handleThemeChange: (theme: "light" | "dark") => void;
-}
+const ThemeToggleAnimated: React.FC<ThemeToggleAnimatedProps> = () => {
+  const [currentTheme, setCurrentTheme] = useState<"light" | "dark">("light");
 
-// ! ----------------------------------------------------------------------------------------------
+  const handleThemeChange = () => {
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    document.documentElement.classList.toggle("light", newTheme === "light");
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    localStorage.setItem("theme", newTheme);
+    setCurrentTheme(newTheme);
+  };
 
-const ThemeToggleAnimated: React.FC<ThemeToggleAnimatedProps> = ({ theme, handleThemeChange }) => {
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialThemeToApply = savedTheme || (prefersDark ? "dark" : "light"); 
+    document.documentElement.classList.toggle("light", initialThemeToApply === "light");
+    document.documentElement.classList.toggle("dark", initialThemeToApply === "dark");
+    setCurrentTheme(initialThemeToApply);
+  }, []);
+  
+  // ! ----------------------------------------------------------------------------------------------
+
   return (
-    <div className="relative flex flex-row items-center justify-center gap-1 p-1 border border-dark rounded-lg md:w-full shadow-sm">
-      <button
-        onClick={() => handleThemeChange("light")}
-        className={`flex-1 p-1.5 rounded-md focus:outline-none focus-visible:ring-2 ring-offset-2 ring-offset-light focus-visible:ring-sky-500 transition-all duration-200 ease-in-out
-          ${
-            theme === "light"
-              ? `bg-[#F18F01] text-white`
-              : `text-regular hover:bg-[#F18F01] hover:text-white`
-          }`}
-      >
-        <Sun size={18} className="mx-auto" />
-      </button>
-
-      <button
-        onClick={() => handleThemeChange("dark")}
-        className={`flex-1 p-1.5 rounded-md focus:outline-none focus-visible:ring-2 ring-offset-2 ring-offset-light focus-visible:ring-sky-500 transition-all duration-200 ease-in-out
-          ${
-            theme === "dark"
-              ? `bg-[#0EA5E9] text-white`
-              : `text-regular hover:bg-[#0EA5E9] hover:text-white`
-          }`}
-      >
-        <Moon size={18} className="mx-auto" />
-      </button>
-    </div>
+    <button
+      onClick={handleThemeChange}
+      className={`flex items-center justify-center
+      w-10 h-10 p-1 rounded-lg bg-grayed text-regular
+      transition-all duration-500 ease-in-out
+      ${currentTheme === "light" ? "hover:text-[#0EA5E9]" : "hover:text-[#F18F01]"}`}
+    >
+      {currentTheme === "light" ? (
+        <Moon size={18} strokeWidth={2}/>
+      ) : (
+        <Sun size={18} strokeWidth={2}/>
+      )}
+    </button>
   );
 };
 

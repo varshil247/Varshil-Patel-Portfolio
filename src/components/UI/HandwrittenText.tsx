@@ -19,13 +19,17 @@ const HandwrittenText: React.FC<HandwrittenTextProps> = ({
   initialViewBox = "0 0 100 30",
   strokeWidth = 1,
   drawDurationSec = 3,
-  eraseDurationSec = 2,
-  viewBoxPadding = 5,
+  pauseDurationSec = 3,
+  eraseDurationSec = 3,
+  blankDurationSec = 3,
+  viewBoxPadding = 1,
   className,
 }) => {
   const pathRef = useRef<SVGPathElement>(null);
   const [calculatedViewBox, setCalculatedViewBox] = useState<string | null>(null);
   const [isViewBoxReady, setIsViewBoxReady] = useState(false);
+  
+  // ! ----------------------------------------------------------------------------------------------
 
   useEffect(() => {
     setIsViewBoxReady(false);
@@ -57,10 +61,11 @@ const HandwrittenText: React.FC<HandwrittenTextProps> = ({
     }
   }, [svgPathData, viewBoxPadding, initialViewBox]);
 
-  useEffect(() => {
-    if (!isViewBoxReady || !calculatedViewBox) return;
+  // ! ----------------------------------------------------------------------------------------------
 
+  useEffect(() => {
     const currentPath = pathRef.current;
+    if (!isViewBoxReady || !calculatedViewBox) return;
     if (!currentPath || !svgPathData) return;
 
     const length = currentPath.getTotalLength();
@@ -81,24 +86,27 @@ const HandwrittenText: React.FC<HandwrittenTextProps> = ({
       });
 
     const animateDrawAndErase = async () => {
-      if (!isMounted || !currentPath) return;
+      while (isMounted && currentPath) {
+        // 1. Reset: Start blank
+        if (!isMounted || !currentPath) return;
+        currentPath.style.transition = "stroke-dashoffset";
+        currentPath.style.strokeDasharray = `${length}`;
+        currentPath.style.strokeDashoffset = `${length}`;
+        currentPath.getBoundingClientRect();
 
-      currentPath.style.transition = "none";
-      currentPath.style.strokeDasharray = `${length}`;
-      currentPath.style.strokeDashoffset = `${length}`;
-      await delay(50);
+        // 2. Follow path and complete border
+        currentPath.style.transition = `stroke-dashoffset ${drawDurationSec*1000*10}ms`;
+        currentPath.style.strokeDashoffset = "0";
+        await delay(drawDurationSec * 1000);
+        await delay(pauseDurationSec * 1000);
 
-      if (!isMounted || !currentPath) return;
-
-      currentPath.style.transition = `stroke-dashoffset ${drawDurationSec}s ease-in-out`;
-      currentPath.style.strokeDashoffset = "0";
-      await delay(drawDurationSec * 1000 + 50);
-
-      if (!isMounted || !currentPath) return;
-
-      currentPath.style.transition = `stroke-dashoffset ${eraseDurationSec}s ease-in-out`;
-      currentPath.style.strokeDashoffset = `${length}`;
-      await delay(eraseDurationSec * 1000 + 50);
+        // 3. Erase the border backwards
+        if (!isMounted || !currentPath) return;
+        currentPath.style.transition = `stroke-dashoffset ${eraseDurationSec*1000*10}ms`;
+        currentPath.style.strokeDashoffset = `${length}`;
+        await delay(eraseDurationSec * 1000);
+        await delay(blankDurationSec * 1000);
+      }
     };
 
     animateDrawAndErase();
@@ -118,25 +126,25 @@ const HandwrittenText: React.FC<HandwrittenTextProps> = ({
     svgPathData,
     strokeWidth,
     drawDurationSec,
+    pauseDurationSec,
     eraseDurationSec,
+    blankDurationSec,
   ]);
+
+  // ! ----------------------------------------------------------------------------------------------
 
   return (
     <svg
       viewBox={calculatedViewBox || initialViewBox}
-      className={`handwriting-svg w-full h-full ${
-        className || ""
-      } transition-opacity duration-300 ease-in-out ${
-        isViewBoxReady && calculatedViewBox ? "opacity-100" : "opacity-0"
-      }`}
+      className="handwriting-svg w-full h-full"
       preserveAspectRatio="xMidYMid meet"
     >
       <path
         ref={pathRef}
         d={svgPathData || "M0,0"}
-        stroke="currentColor"
+        stroke="var(--regular)"
+        fill="var(--background)"
         strokeWidth={strokeWidth}
-        fill="none"
       />
     </svg>
   );
