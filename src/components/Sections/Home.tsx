@@ -44,7 +44,7 @@ const Home: React.FC = () => {
             drawDurationSec={phrase.drawDurSec}
             pauseDurationSec={phrase.pauseDurSec}
             eraseDurationSec={phrase.eraseDurSec}
-            blankDurationSec={phrase.blackDurSec}
+            blankDurationSec={phrase.blankDurSec}
             strokeWidth={phrase.strokeW}
           />
         </div>

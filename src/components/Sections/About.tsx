@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { FC } from "react";
 import { Building2, ChevronUp, ChevronDown } from "lucide-react";
 
