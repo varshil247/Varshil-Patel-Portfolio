@@ -73,7 +73,7 @@ const App: React.FC = () => {
   
   // ! ----------------------------------------------------------------------------------------------
 
-  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, index: number) => {
+  const handleScrollToSection = (e: React.MouseEvent<HTMLElement>, index: number) => {
     e.preventDefault();
     const target = sectionRefs.current[index];
     
@@ -86,10 +86,9 @@ const App: React.FC = () => {
   // ! ----------------------------------------------------------------------------------------------
 
   return (
-    <div className="flex flex-col-reverse w-screen h-screen p-3 gap-3 bg-background md:flex-col">
-
+    <div className="flex flex-col-reverse w-screen h-screen p-3 gap-3 bg-background select-none md:flex-col">
       <header className="flex justify-center sticky top-0 left-0">
-        <nav className="flex justify-between max-w-3xl w-full bg-light p-3 gap-3 rounded-xl">
+        <nav className="flex justify-between max-w-2xl w-full bg-light p-3 gap-3 rounded-xl">
           <img
             src={PortfolioLogo}
             onClick={(e) => handleScrollToSection(e, 0)}
@@ -124,7 +123,7 @@ const App: React.FC = () => {
             id={link.id}
             key={link.id}
             ref={(element) => {sectionRefs.current[index] = element}}
-            className="flex flex-col gap-3 max-w-3xl w-full mb-[3rem] md:mb-[10rem]"
+            className="flex flex-col gap-3 max-w-2xl w-full mb-[3rem] md:mb-[10rem]"
           >
             <p className="text-regular mx-1 leading-none">{link.label}</p>
             <div>{link.content}</div>

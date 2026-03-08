@@ -1,11 +1,11 @@
 import React from "react";
 import HandwrittenText from "../UI/HandwrittenText";
 
-import Img7 from "../../assets/img7.jpg";
-import Img8 from "../../assets/img8.jpg";
-import Img9 from "../../assets/img9.jpg";
-import Img10 from "../../assets/img10.jpg";
-import Img11 from "../../assets/img11.jpg";
+import Img7 from "../../assets/img7.png";
+import Img8 from "../../assets/img8.png";
+import Img9 from "../../assets/img9.png";
+import Img10 from "../../assets/img10.png";
+import Img11 from "../../assets/img11.png";
 
 // ! ----------------------------------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ const phrase = {
   drawDurSec: 20,
   pauseDurSec: 5,
   eraseDurSec: 20,
-  blackDurSec: 5,
+  blankDurSec: 5,
   strokeW: 1.5,
 };
 
@@ -25,7 +25,8 @@ const Home: React.FC = () => {
   return (
     <div className="grid grid-cols-4 auto-rows-[5rem] gap-3 md:auto-rows-[11rem]">
       <div className="flex items-center justify-center p-3 bg-light rounded-xl
-        col-span-2 col-start-1 row-span-1 row-start-1">
+        col-span-2 col-start-1 row-span-1 row-start-1
+        md:col-span-2 md:col-start-1 md:row-span-1 md:row-start-1">
         <p className="flex items-center translate-y-[1px] font-bebas font-extrabold
           text-regular text-xl sm:text-3xl md:text-4xl lg:text-5xl">
           VARSHIL PATEL
@@ -33,7 +34,8 @@ const Home: React.FC = () => {
       </div>
 
       <div className="flex items-center justify-center bg-light rounded-xl
-        col-span-2 row-span-1 col-start-3 row-start-1">
+        col-span-2 row-span-1 col-start-3 row-start-1
+        md:col-span-2 md:row-span-1 md:col-start-3 md:row-start-1">
         <div className="flex items-center justify-center max-w-xl w-full
           text-regular h-4 sm:h-6 md:h-7 lg:h-9 w-full max-w-xl">
           <HandwrittenText
@@ -42,47 +44,53 @@ const Home: React.FC = () => {
             drawDurationSec={phrase.drawDurSec}
             pauseDurationSec={phrase.pauseDurSec}
             eraseDurationSec={phrase.eraseDurSec}
-            blackDurationSec={phrase.blackDurSec}
+            blankDurationSec={phrase.blackDurSec}
             strokeWidth={phrase.strokeW}
           />
         </div>
       </div>
 
       <div className="flex items-center justify-center p-3 bg-light rounded-xl
-        col-span-4 row-span-1 col-start-1 row-start-2">
+        col-span-4 row-span-1 col-start-1 row-start-5
+        md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-2">
         <p className="text-center text-regular italic max-w-sm text-xs md:text-lg md:max-w-2xl">
           Hi! I'm Varshil, a passionate Computer Scientist with a keen interest in applying powerful AI/ML solutions to drive impactful fullstack applications.
         </p>
       </div>
 
       <div className="flex items-center justify-center p-0 bg-light rounded-xl
-        col-span-2 row-span-2 col-start-1 row-start-3">
+        col-span-4 row-span-2 col-start-1 row-start-2
+        md:col-span-2 md:row-span-2 md:col-start-1 md:row-start-3">
         <img src={Img7} className="flex flex-row w-full h-full object-cover rounded-xl"/>
       </div>
 
       <div className="flex items-center justify-center p-0 bg-light rounded-xl
-        col-span-1 row-span-1 col-start-3 row-start-3">
+        col-span-1 row-span-1 col-start-1 row-start-4
+        md:col-span-1 md:row-span-1 md:col-start-3 md:row-start-3">
         <img src={Img8} className="flex flex-row w-full h-full object-cover rounded-xl"/>
       </div>
 
       <div className="flex items-center justify-center p-0 bg-light rounded-xl
-        col-span-1 row-span-1 col-start-4 row-start-3">
+        col-span-1 row-span-1 col-start-2 row-start-4
+        md:col-span-1 md:row-span-1 md:col-start-4 md:row-start-3">
         <img src={Img9} className="flex flex-row w-full h-full object-cover rounded-xl"/>
       </div>
 
       <div className="flex items-center justify-center p-0 bg-light rounded-xl
         col-span-1 row-span-1 col-start-3 row-start-4
-        md:col-start-1 md:row-start-5">
+        md:col-span-1 md:row-span-1 md:col-start-1 md:row-start-5">
         <img src={Img11} className="flex flex-row w-full h-full object-cover rounded-xl"/>
       </div>
 
       <div className="flex items-center justify-center p-0 bg-light rounded-xl
         col-span-1 row-span-1 col-start-4 row-start-4
-        md:col-start-2 md:row-start-5">
+        md:col-span-1 md:row-span-1 md:col-start-2 md:row-start-5">
         <img src={Img10} className="flex flex-row w-full h-full object-cover rounded-xl"/>
       </div>
 
-      <div className="hidden md:flex col-span-2 row-span-2 col-start-3 row-start-4 p-0 bg-[#1f1f1f] rounded-xl">
+      <div className="hidden md:flex p-0 bg-[#1f1f1f] rounded-xl
+        col-span-2 row-span-2 col-start-3 row-start-4
+        md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-4">
         <iframe
           data-testid="embed-iframe"
           className="w-full h-[352px]"

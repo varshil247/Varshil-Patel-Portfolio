@@ -86,13 +86,12 @@ const projectData: ProjectEntry[] = [
 
 const Projects: FC = () => {
   return (
-    <div className="flex flex-col md:grid grid-cols-12 auto-rows-[15rem] gap-3 group">
+    <div className="flex flex-col md:grid grid-cols-12 gap-3">
       {projectData.map((project, index) => (
         <div
           key={project.id}
           className={`flex flex-col p-6 gap-6 bg-light rounded-xl
-          group-hover:opacity-50 hover:!opacity-100 hover:cursor-default 
-          transition-all duration-300 ease-in-out 
+          cursor-pointer hover:bg-grayed transition-all duration-300 ease-in-out 
           col-span-6 row-span-1 col-start-${index*4%2} row-start-${index*4%2}`}
         >
           <div className="flex justify-between gap-3">

@@ -1,13 +1,13 @@
-import React, { type JSX } from "react";
-import { Linkedin, Github, Mail, Phone } from 'lucide-react';
+import { type JSX } from "react";
+import { Linkedin, Github, Mail } from 'lucide-react';
 
 // ! ----------------------------------------------------------------------------------------------
 
 interface ContactEntry {
   id: number;
   desc: string;
-  icon: JSX.element;
-  url: string | null;
+  icon: JSX.Element;
+  url: string;
 }
 
 // ! ----------------------------------------------------------------------------------------------
@@ -35,10 +35,10 @@ const contactData: ContactEntry[] = [
 
 // ! ----------------------------------------------------------------------------------------------
 
-const Contact: FC = () => {
+const Contact = () => {
   return (
     <div className="flex flex-col md:flex-row gap-3 w-full h-full group">
-      {contactData.map((contact, index) => (
+      {contactData.map((contact) => (
         <div
           key={contact.id}
           onClick={() => window.open(contact.url, "_blank", "noopener,noreferrer")}

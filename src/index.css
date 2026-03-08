@@ -5,21 +5,20 @@
 @tailwind utilities;
 
 .light {
-  --background: #ffffff;
-  --light: #E5E6E8;
-  --regular: #556a7e;
-  --dark: #000000;
-  --special: #2d8650;
-  --grayed: rgba(122,147,172,0.15);
+  --background: rgba(255, 255, 255, 1);
+  --light: rgba(229, 230, 232, 1);
+  --regular: rgba(85, 106, 126, 1);
+  --dark: rgba(0, 0, 0, 1);
+  --special: rgba(45, 134, 80, 1);
+  --grayed: rgba(122, 147, 172, 0.15);
 }
-
 .dark {
-  --background: #000000;
-  --light: #111217;
-  --regular: #7a93ac;
-  --dark: #ffffff;
-  --special: #aef6c7;
-  --grayed: rgba(122,147,172,0.15);
+  --background: rgba(0, 0, 0, 1);
+  --light: rgba(17, 18, 23, 1);
+  --regular: rgba(122, 147, 172, 1);
+  --dark: rgba(255, 255, 255, 1);
+  --special: rgba(174, 246, 199, 1);
+  --grayed: rgba(122, 147, 172, 0.15);
 }
 
 html {
