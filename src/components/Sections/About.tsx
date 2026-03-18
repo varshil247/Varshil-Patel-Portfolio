@@ -50,7 +50,7 @@ const experienceData: ExperienceEntry[] = [
   {
     id: 1,
     company: "Google DeepMind",
-    role: "Research Ready Intern",
+    role: "AI Research Intern",
     date: "Jun 2025 - Aug 2025",
     location: "London",
     description: "Researched, engineered and presented novel Progressive Data Dropout methods. Implemented adaptive and dynamic curriculum learning techiques ontop of schedule matched random dropout.",

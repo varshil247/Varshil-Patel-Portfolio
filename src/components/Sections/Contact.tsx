@@ -15,21 +15,21 @@ interface ContactEntry {
 const contactData: ContactEntry[] = [
   {
     id: 1,
-    desc: "LinkedIn/varshil247",
+    desc: "LinkedIn",
     icon: <Linkedin size={18} strokeWidth={2}/>,
     url: "https://linkedin.com/in/varshil247",
   },
   {
     id: 2,
-    desc: "GitHub/varshil247",
+    desc: "GitHub",
     icon: <Github size={18} strokeWidth={2}/>,
-    url: "https://linkedin.com/in/varshil247",
+    url: "https://github.com/varshil247",
   },
   {
     id: 3,
-    desc: "Gmail/varshil247",
+    desc: "Gmail",
     icon: <Mail size={18} strokeWidth={2}/>,
-    url: "https://linkedin.com/in/varshil247",
+    url: "mailto:varshil247@gmail.com",
   }
 ]
 

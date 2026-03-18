@@ -97,16 +97,16 @@ const Projects: FC = () => {
           <div className="flex justify-between gap-3">
             <p className="font-semibold text-dark truncate">{project.name}</p>
             <div className="flex items-center gap-3">
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-regular transition-all duration-300 ease-in-out hover:text-special"
-              >
-                <ExternalLink size={18} />
-              </a>
-            )}
+            {/* {project.liveUrl && ( */}
+            {/*   <a */}
+            {/*     href={project.liveUrl} */}
+            {/*     target="_blank" */}
+            {/*     rel="noopener noreferrer" */}
+            {/*     className="text-regular transition-all duration-300 ease-in-out hover:text-special" */}
+            {/*   > */}
+            {/*     <ExternalLink size={18} /> */}
+            {/*   </a> */}
+            {/* )} */}
             </div>
           </div>
           <p className="text-sm text-regular">{project.description}</p>
